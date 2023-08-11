@@ -1,8 +1,13 @@
 SELECT EOMONTH(CONVERT(DATE, getdate()), 0)  AS 'ultimo dia do mes atual';
 SELECT EOMONTH(CONVERT(DATE, getdate()), -1) AS 'ultimo dia do mes anterior';
 SELECT EOMONTH(CONVERT(DATE, getdate()), +1) AS 'ultimo dia do proximo mes';
-
 -- Fonte: Whatsapp: Autoridade MS SQL Server ~ William
+
+-- OU
+
+DECLARE @data DATETIME = GETDATE();
+SELECT DATEADD(DD, -DAY(DATEADD(M, 1, @data)), DATEADD(M, 1, @data)) AS UltimoDiaMes;
+-- Fonte: https://andrebtoe.com/2015/04/07/como-obter-ultimo-dia-do-mes-no-sql-server/
 
 /*
 A função `EOMONTH` (End of Month) no Microsoft SQL Server é uma função usada para retornar a data do último dia do mês para uma data fornecida como argumento.
